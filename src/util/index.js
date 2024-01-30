@@ -20,16 +20,13 @@ export class Face {
       STATE.isSizeOptionChanged = false;
     }
 
-    if (STATE.isModelChanged || STATE.isFlagChanged) {
+    if (STATE.isModelChanged) {
       STATE.isModelChanged = true;
 
       window.cancelAnimationFrame(this.rafId);
 
       if (this.detector != null) {
         this.detector.dispose();
-      }
-
-      if (STATE.isFlagChanged) {
       }
 
       try {
@@ -39,7 +36,6 @@ export class Face {
         alert(error);
       }
 
-      STATE.isFlagChanged = false;
       STATE.isModelChanged = false;
     }
   }
